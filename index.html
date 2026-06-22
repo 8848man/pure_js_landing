@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sentinel — 인시던트 대응을 구조화된 반복 가능한 워크플로우로 전환합니다. 같은 인시던트를 두 번 해결하는 일을 멈추세요." />
+  <title>Sentinel — Incident Intelligence</title>
+  <link rel="icon" type="image/png" href="assets/images/sentinel_favicon_v2.png" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       Navigation
+       ============================================================ -->
+  <header>
+    <nav class="nav" id="nav" role="navigation" aria-label="주요 내비게이션">
+      <div class="nav__inner">
+        <!-- Logo -->
+        <a href="#" class="nav__logo" aria-label="Sentinel 홈으로 이동">
+          <img
+            src="assets/images/sentinel_main_logo_v2.png"
+            alt="Sentinel 로고"
+            width="140"
+            height="32"
+          />
+        </a>
+
+        <!-- Desktop nav links -->
+        <div class="nav__links" role="list">
+          <a href="#problem" role="listitem">문제</a>
+          <a href="#solution" role="listitem">솔루션</a>
+          <a href="#features" role="listitem">기능</a>
+          <a href="#cta" role="listitem">시작하기</a>
+        </div>
+
+        <!-- Desktop CTA -->
+        <div class="nav__cta">
+          <button
+            class="btn btn-primary"
+            onclick="openModal()"
+            aria-label="얼리 액세스 신청 모달 열기"
+          >
+            얼리 액세스
+          </button>
+        </div>
+
+        <!-- Hamburger (mobile) -->
+        <button
+          class="nav__hamburger"
+          id="hamburger"
+          aria-label="모바일 메뉴 열기"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <!-- Mobile menu -->
+      <nav
+        class="nav__mobile"
+        id="mobile-menu"
+        aria-label="모바일 내비게이션"
+        aria-hidden="true"
+      >
+        <a href="#problem" onclick="closeMobileMenu()">문제</a>
+        <a href="#solution" onclick="closeMobileMenu()">솔루션</a>
+        <a href="#features" onclick="closeMobileMenu()">기능</a>
+        <a href="#cta" onclick="closeMobileMenu()">시작하기</a>
+        <a
+          href="#"
+          onclick="openModal(); closeMobileMenu(); return false;"
+          aria-label="얼리 액세스 신청"
+        >
+          얼리 액세스 신청
+        </a>
+      </nav>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ============================================================
+         Hero Section
+         ============================================================ -->
+    <section class="hero" id="hero" aria-label="히어로">
+      <!-- Background decorations -->
+      <div class="hero__bg-grid" aria-hidden="true"></div>
+      <div class="hero__glow" aria-hidden="true"></div>
+
+      <div class="hero__content">
+        <!-- Status badge -->
+        <div class="hero__badge fade-up">
+          <span class="badge">
+            <span class="badge-dot" aria-hidden="true"></span>
+            Incident Intelligence — 얼리 액세스 진행 중
+          </span>
+        </div>
+
+        <!-- Headline -->
+        <h1 class="hero__title fade-up">
+          같은 인시던트를
+          <span class="hero__title-gradient">두 번 해결하는</span>
+          일을 멈추세요
+        </h1>
+
+        <!-- Subheadline -->
+        <p class="hero__subtitle fade-up">
+          Sentinel은 인시던트 대응을 구조화된, 반복 가능한 워크플로우로 전환합니다.
+        </p>
+
+        <!-- CTA buttons -->
+        <div class="hero__cta-group fade-up">
+          <a
+            href="https://sentinel-demo-c12b7.web.app/"
+            class="btn btn-primary"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="인터랙티브 데모 체험하기 (새 탭에서 열림)"
+          >
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <circle cx="8" cy="8" r="3" fill="currentColor" opacity="0.8"/>
+              <path d="M8 2V1M8 15V14M2 8H1M15 8H14M3.93 3.93L3.22 3.22M12.78 12.78L12.07 12.07M12.07 3.93L12.78 3.22M3.22 12.78L3.93 12.07" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+            데모 체험하기
+          </a>
+          <button
+            class="btn btn-secondary"
+            onclick="openModal()"
+            aria-label="얼리 액세스 웨이트리스트 참가"
+          >
+            얼리 액세스 신청
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Social proof -->
+        <div class="hero__social-proof fade-up">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M7 1L8.5 5H13L9.5 7.5L10.8 12L7 9.5L3.2 12L4.5 7.5L1 5H5.5L7 1Z" fill="#FFB547"/>
+          </svg>
+          <span>엔지니어링 중심 기업의 온콜 팀이 신뢰하는 도구</span>
+        </div>
+
+        <!-- Product mockup -->
+        <div class="hero__mockup fade-up" aria-label="Sentinel 대시보드 미리보기">
+          <div class="hero__mockup-glow" aria-hidden="true"></div>
+          <div class="hero__mockup-window" role="img" aria-label="Sentinel 인시던트 관리 화면 목업">
+            <!-- Window chrome -->
+            <div class="mockup-chrome" aria-hidden="true">
+              <div class="mockup-dots">
+                <div class="mockup-dot" style="background:#FF5A5A;"></div>
+                <div class="mockup-dot" style="background:#FFB547;"></div>
+                <div class="mockup-dot" style="background:#3DD68C;"></div>
+              </div>
+              <div class="mockup-url">
+                <div class="mockup-url-bar">sentinel.app / incidents</div>
+              </div>
+              <div style="width:60px;"></div>
+            </div>
+
+            <!-- Mockup content -->
+            <div class="mockup-body">
+              <div class="mockup-incident-card">
+                <div class="incident-header">
+                  <div class="incident-title">
+                    <div class="incident-dot" aria-hidden="true"></div>
+                    <span class="incident-name">Payment P99 &gt; 2000ms</span>
+                    <span class="incident-meta">ALERT-091 · Mon 09:42</span>
+                  </div>
+                  <span class="incident-status">ACTIVE</span>
+                </div>
+
+                <div class="mockup-steps" role="list" aria-label="인시던트 해결 단계">
+                  <div class="mockup-step done" role="listitem">
+                    <div class="step-check done" aria-label="완료"></div>
+                    <span class="step-text">결제 서비스 런북 매칭 완료</span>
+                    <span class="step-badge" aria-label="단계 1">1</span>
+                  </div>
+                  <div class="mockup-step done" role="listitem">
+                    <div class="step-check done" aria-label="완료"></div>
+                    <span class="step-text">7개 우선순위 조치 항목 로드됨</span>
+                    <span class="step-badge" aria-label="단계 2">2</span>
+                  </div>
+                  <div class="mockup-step active" role="listitem" aria-current="step">
+                    <div class="step-check active" aria-label="진행 중"></div>
+                    <span class="step-text">결제 레플리카 스케일 조정 — @alex 진행 중</span>
+                    <span class="step-badge" style="color:var(--color-accent);" aria-label="단계 3">3</span>
+                  </div>
+                  <div class="mockup-step" role="listitem">
+                    <div class="step-check" aria-label="대기 중"></div>
+                    <span class="step-text">워크플로우 저장 — 다음 인시던트에서 재사용</span>
+                    <span class="step-badge" aria-label="단계 4">4</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         Problem Section
+         ============================================================ -->
+    <section class="section" id="problem" aria-labelledby="problem-title">
+      <div class="container">
+        <hr class="section-divider" aria-hidden="true" />
+
+        <div class="section__label">
+          <span class="badge">문제</span>
+        </div>
+
+        <h2 class="section__title" id="problem-title">
+          인시던트를 해결하는 게 아닙니다.
+          <span class="section__title-danger">반복하고 있는 겁니다.</span>
+        </h2>
+
+        <div class="problem-grid">
+          <!-- Problem 1: Signal Overload -->
+          <article class="card problem-card fade-up" aria-labelledby="p1-title">
+            <div>
+              <div class="problem-card__tag">
+                <span class="problem-card__tag-icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M10 2C5.58 2 2 5.58 2 10s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm-1-5h2V7H9v4zm0 2h2v-2H9v2z" fill="currentColor"/>
+                  </svg>
+                </span>
+                <span class="problem-card__tag-label">Signal Overload</span>
+              </div>
+              <h3 class="problem-card__title" id="p1-title">같은 알림, 다른 날</h3>
+              <p class="problem-card__desc">
+                매주 같은 알림이 발생합니다. 팀은 매번 처음부터 조사합니다. 인시던트 간에 기억이 없습니다.
+              </p>
+            </div>
+            <div class="alert-rows" aria-label="반복되는 알림 예시">
+              <div class="alert-row">
+                <div class="alert-dot" aria-hidden="true"></div>
+                <span class="alert-msg">Payment P99 &gt; 2000ms</span>
+                <span class="alert-time">Mon 09:42</span>
+              </div>
+              <div class="alert-row">
+                <div class="alert-dot" aria-hidden="true"></div>
+                <span class="alert-msg">Payment P99 &gt; 2000ms</span>
+                <span class="alert-time">Wed 14:12</span>
+              </div>
+              <div class="alert-row">
+                <div class="alert-dot" aria-hidden="true"></div>
+                <span class="alert-msg">Payment P99 &gt; 2000ms</span>
+                <span class="alert-time">Fri 22:07</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Problem 2: Knowledge Loss -->
+          <article class="card problem-card fade-up" aria-labelledby="p2-title">
+            <div>
+              <div class="problem-card__tag">
+                <span class="problem-card__tag-icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M17 2H3C2.45 2 2 2.45 2 3v10c0 .55.45 1 1 1h4v2H6v2h8v-2h-1v-2h4c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm-1 10H4V4h12v8z" fill="currentColor"/>
+                  </svg>
+                </span>
+                <span class="problem-card__tag-label">Knowledge Loss</span>
+              </div>
+              <h3 class="problem-card__title" id="p2-title">Slack에서 사라지는 지식</h3>
+              <p class="problem-card__desc">
+                해결책은 6주 전 스레드에 있습니다. 누가 찾았는지 아무도 모릅니다. 검색하다 보면 이미 40분이 지나있습니다.
+              </p>
+            </div>
+            <div class="chat-rows" aria-label="Slack 대화 예시">
+              <div class="chat-row">
+                <div class="chat-meta">
+                  <div class="chat-avatar" aria-hidden="true">A</div>
+                  <span class="chat-user">alex</span>
+                  <span class="chat-time">6주 전</span>
+                </div>
+                <p class="chat-msg">커넥션 풀 문제인 것 같아요</p>
+              </div>
+              <div class="chat-row">
+                <div class="chat-meta">
+                  <div class="chat-avatar" aria-hidden="true">S</div>
+                  <span class="chat-user">sam</span>
+                  <span class="chat-time">6주 전</span>
+                </div>
+                <p class="chat-msg">찾았어요 — 레플리카 먼저 스케일하고 redis 확인</p>
+              </div>
+              <div class="chat-row highlight">
+                <div class="chat-meta">
+                  <div class="chat-avatar" aria-hidden="true">J</div>
+                  <span class="chat-user">jordan</span>
+                  <span class="chat-time">지금</span>
+                </div>
+                <p class="chat-msg">지난번에 어떻게 고쳤는지 기억하는 분 있나요?</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Problem 3: Process Failure -->
+          <article class="card problem-card fade-up" aria-labelledby="p3-title">
+            <div>
+              <div class="problem-card__tag">
+                <span class="problem-card__tag-icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M14 6l-1-2H5v13h2v-5h5l1 2h5V6h-4zm2 6h-3l-1-2H7V6h5l1 2h3v4z" fill="currentColor"/>
+                  </svg>
+                </span>
+                <span class="problem-card__tag-label">Process Failure</span>
+              </div>
+              <h3 class="problem-card__title" id="p3-title">아무도 안 읽는 런북</h3>
+              <p class="problem-card__desc">
+                위키에 런북이 47개 있습니다. 인시던트 중에는 아무도 읽지 않습니다. 오래됐고, 구조도 없고, 실제 알림과도 연결이 안 돼 있습니다.
+              </p>
+            </div>
+            <div class="runbook-rows" aria-label="오래된 런북 목록 예시">
+              <div class="runbook-row">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                  <rect x="1" y="1" width="10" height="10" rx="2" stroke="#5a6474" stroke-width="1.2"/>
+                  <path d="M3 4h6M3 6h6M3 8h4" stroke="#5a6474" stroke-width="1" stroke-linecap="round"/>
+                </svg>
+                <div class="runbook-info">
+                  <div class="runbook-name">payment-runbook-v3.md</div>
+                  <div class="runbook-updated">8개월 전 업데이트</div>
+                </div>
+                <div class="runbook-reads">2회 조회</div>
+              </div>
+              <div class="runbook-row">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                  <rect x="1" y="1" width="10" height="10" rx="2" stroke="#5a6474" stroke-width="1.2"/>
+                  <path d="M3 4h6M3 6h6M3 8h4" stroke="#5a6474" stroke-width="1" stroke-linecap="round"/>
+                </svg>
+                <div class="runbook-info">
+                  <div class="runbook-name">db-incident-guide.md</div>
+                  <div class="runbook-updated">14개월 전 업데이트</div>
+                </div>
+                <div class="runbook-reads zero">0회 조회</div>
+              </div>
+              <div class="runbook-row">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                  <rect x="1" y="1" width="10" height="10" rx="2" stroke="#5a6474" stroke-width="1.2"/>
+                  <path d="M3 4h6M3 6h6M3 8h4" stroke="#5a6474" stroke-width="1" stroke-linecap="round"/>
+                </svg>
+                <div class="runbook-info">
+                  <div class="runbook-name">sre-playbook-2022.md</div>
+                  <div class="runbook-updated">2년 전 업데이트</div>
+                </div>
+                <div class="runbook-reads zero">0회 조회</div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         Solution Section
+         ============================================================ -->
+    <section class="section" id="solution" aria-labelledby="solution-title">
+      <div class="container">
+        <hr class="section-divider" aria-hidden="true" />
+
+        <div class="section__label">
+          <span class="badge">솔루션</span>
+        </div>
+
+        <div class="solution-grid">
+          <!-- Left: Text -->
+          <div>
+            <h2 class="section__title" id="solution-title" style="margin-bottom:16px;">
+              구조화된 인시던트
+              <br>
+              <span style="background:linear-gradient(135deg,#4DA3FF 0%,#818cf8 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">인텔리전스</span>
+            </h2>
+
+            <p class="solution__subtitle">
+              컨텍스트를 캡처합니다.<br>
+              조치를 제안합니다.<br>
+              명확하게 실행합니다.
+            </p>
+
+            <div class="solution__features">
+              <!-- Feature 1 -->
+              <div class="feature-item fade-up">
+                <div class="feature-icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <path d="M9 2L3 5v5c0 3.55 2.57 6.88 6 7.68C12.43 16.88 15 13.55 15 10V5L9 2z" stroke="#4DA3FF" stroke-width="1.4" stroke-linejoin="round"/>
+                    <path d="M6.5 9l2 2 3.5-3.5" stroke="#4DA3FF" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div>
+                  <div class="feature-title">컨텍스트 캡처</div>
+                  <p class="feature-desc">모든 단계, 결정, 해결책이 캡처됩니다. Slack이 아닌 워크플로우에, 그것이 속한 곳에.</p>
+                </div>
+              </div>
+
+              <!-- Feature 2 -->
+              <div class="feature-item fade-up">
+                <div class="feature-icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <circle cx="9" cy="9" r="3" stroke="#4DA3FF" stroke-width="1.4"/>
+                    <path d="M9 1v2M9 15v2M1 9h2M15 9h2M3.22 3.22l1.41 1.41M13.36 13.36l1.42 1.42M3.22 14.78l1.41-1.41M13.36 4.64l1.42-1.42" stroke="#4DA3FF" stroke-width="1.4" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                <div>
+                  <div class="feature-title">조치 제안</div>
+                  <p class="feature-desc">Sentinel이 인시던트를 알려진 패턴과 매칭하여 생각하기 전에 올바른 단계를 제시합니다.</p>
+                </div>
+              </div>
+
+              <!-- Feature 3 -->
+              <div class="feature-item fade-up">
+                <div class="feature-icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <rect x="2" y="5" width="14" height="10" rx="2" stroke="#4DA3FF" stroke-width="1.4"/>
+                    <path d="M6 5V4a3 3 0 016 0v1" stroke="#4DA3FF" stroke-width="1.4" stroke-linecap="round"/>
+                    <path d="M9 10v2M9 10a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" stroke="#4DA3FF" stroke-width="1.3" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                <div>
+                  <div class="feature-title">명확한 실행</div>
+                  <p class="feature-desc">실시간 구조화된 체크리스트가 부족 지식을 대체합니다. 모두가 완료된 것, 다음 것, 담당자를 압니다.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Workflow visual -->
+          <div class="workflow-panel fade-up" aria-label="Sentinel 인시던트 워크플로우 미리보기">
+            <div class="workflow-header">
+              <span>Incident Workflow</span>
+              <span class="live-badge" aria-label="실시간">
+                <span class="live-dot" aria-hidden="true"></span>
+                LIVE
+              </span>
+            </div>
+
+            <div class="workflow-steps" role="list">
+              <!-- Step 1: done -->
+              <div class="workflow-step" role="listitem">
+                <div class="workflow-step__indicator">
+                  <div class="workflow-node done" aria-label="완료"></div>
+                  <div class="workflow-connector done"></div>
+                </div>
+                <div class="workflow-step__content">
+                  <div class="workflow-phase done">Capture</div>
+                  <div class="workflow-step-title done">인시던트 감지 — Payment P99 스파이크</div>
+                  <div class="workflow-detail">런북 매칭: Payment Service Degradation</div>
+                </div>
+              </div>
+
+              <!-- Step 2: done -->
+              <div class="workflow-step" role="listitem">
+                <div class="workflow-step__indicator">
+                  <div class="workflow-node done" aria-label="완료"></div>
+                  <div class="workflow-connector done"></div>
+                </div>
+                <div class="workflow-step__content">
+                  <div class="workflow-phase done">Suggest</div>
+                  <div class="workflow-step-title done">제안된 조치 로드 완료</div>
+                  <div class="workflow-detail">7단계. 우선순위 정렬. 컨텍스트 첨부.</div>
+                </div>
+              </div>
+
+              <!-- Step 3: active -->
+              <div class="workflow-step" role="listitem" aria-current="step">
+                <div class="workflow-step__indicator">
+                  <div class="workflow-node active" aria-label="진행 중"></div>
+                  <div class="workflow-connector"></div>
+                </div>
+                <div class="workflow-step__content">
+                  <div class="workflow-phase active">Execute</div>
+                  <div class="workflow-step-title active">4단계: 결제 레플리카 스케일</div>
+                  <div class="workflow-detail">담당자: @alex — 진행 중</div>
+                </div>
+              </div>
+
+              <!-- Step 4: pending -->
+              <div class="workflow-step" role="listitem">
+                <div class="workflow-step__indicator">
+                  <div class="workflow-node" aria-label="대기 중"></div>
+                </div>
+                <div class="workflow-step__content">
+                  <div class="workflow-phase">Reuse</div>
+                  <div class="workflow-step-title">워크플로우 저장 — 다음번을 위해</div>
+                  <div class="workflow-detail">유사 인시던트에서 자동 제안됩니다</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         Features (Value Props) Section
+         ============================================================ -->
+    <section class="section" id="features" aria-labelledby="features-title">
+      <div class="container">
+        <hr class="section-divider" aria-hidden="true" />
+
+        <div class="section__header">
+          <div class="section__label">
+            <span class="badge">기능</span>
+          </div>
+          <h2 class="section__title section__title--center" id="features-title">
+            Sentinel이 팀에 제공하는 것
+          </h2>
+        </div>
+
+        <div class="value-grid">
+          <!-- Value 1 -->
+          <article class="card value-card fade-up" aria-labelledby="v1-title">
+            <div class="value-card__accent" aria-hidden="true"></div>
+            <div class="value-card__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                <path d="M11 2C6.03 2 2 6.03 2 11s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9z" stroke="#4DA3FF" stroke-width="1.5"/>
+                <path d="M7.5 11l2.5 2.5 5-5" stroke="#4DA3FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="value-card__title" id="v1-title">같은 인시던트 대응을 반복하지 마세요</h3>
+            <p class="value-card__desc">
+              해결된 모든 인시던트는 더 스마트한 시스템으로 나아가는 발판입니다. Sentinel이 효과적인 것을 캡처하여 매번 대응이 더 빨라집니다.
+            </p>
+            <div class="value-card__stat">
+              <span class="stat-number">68%</span>
+              <span class="stat-label">반복 인시던트 시간 감소</span>
+            </div>
+          </article>
+
+          <!-- Value 2 -->
+          <article class="card value-card fade-up" aria-labelledby="v2-title">
+            <div class="value-card__accent" aria-hidden="true"></div>
+            <div class="value-card__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                <rect x="3" y="6" width="16" height="12" rx="2" stroke="#4DA3FF" stroke-width="1.5"/>
+                <path d="M7 6V5a4 4 0 018 0v1" stroke="#4DA3FF" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M11 11v2M9.5 11.5a1.5 1.5 0 103 0 1.5 1.5 0 00-3 0z" stroke="#4DA3FF" stroke-width="1.3" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="value-card__title" id="v2-title">인시던트를 재사용 가능한 지식으로</h3>
+            <p class="value-card__desc">
+              Slack 스레드와 낡은 위키에 컨텍스트를 잃지 마세요. 모든 워크플로우가 팀이 발전시킬 수 있는 살아있는 자산이 됩니다.
+            </p>
+            <div class="value-card__stat">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">해결책 자동 캡처</span>
+            </div>
+          </article>
+
+          <!-- Value 3 -->
+          <article class="card value-card fade-up" aria-labelledby="v3-title">
+            <div class="value-card__accent" aria-hidden="true"></div>
+            <div class="value-card__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                <path d="M11 2L4 6v6c0 4.42 3.01 8.57 7 9.54C15 20.57 18 16.42 18 12V6L11 2z" stroke="#4DA3FF" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M8 12l2 2 4-4" stroke="#4DA3FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="value-card__title" id="v3-title">압박 속에서 팀을 정렬하세요</h3>
+            <p class="value-card__desc">
+              공유되는 실시간 워크플로우는 병렬 스레드, "지금 상태가 어때?"라는 질문, 인시던트 중 놓치는 공을 없앱니다.
+            </p>
+            <div class="value-card__stat">
+              <span class="stat-number">3×</span>
+              <span class="stat-label">평균 해결 시간 단축</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CTA Section
+         ============================================================ -->
+    <section class="cta-section" id="cta" aria-labelledby="cta-title">
+      <div class="cta-section__bg-glow" aria-hidden="true"></div>
+      <div class="cta-section__bg-grid" aria-hidden="true"></div>
+
+      <div class="cta-section__inner">
+        <div style="margin-bottom:24px;">
+          <span class="badge">시작하기</span>
+        </div>
+
+        <h2 class="cta-section__title" id="cta-title">
+          같은 인시던트를 두 번 해결하지 마세요.
+        </h2>
+
+        <p class="cta-section__subtitle">
+          Sentinel을 경험하는 방법을 선택하세요 — 데모 탐색, 팀과 대화, 또는 얼리 액세스 신청.
+        </p>
+
+        <div class="cta-grid">
+          <!-- Primary: Demo -->
+          <div class="cta-primary fade-up">
+            <div class="cta-primary__glow" aria-hidden="true"></div>
+            <h3 class="cta-card__title">인터랙티브 데모 체험</h3>
+            <p class="cta-card__desc">
+              Sentinel이 인시던트 해결을 단계별로 구조화하는 방법을 탐색하세요. 회원가입 불필요.
+            </p>
+            <a
+              href="https://sentinel-demo-c12b7.web.app/"
+              class="btn btn-primary"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Sentinel 데모 실행 (새 탭에서 열림)"
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <circle cx="8" cy="8" r="3" fill="currentColor" opacity="0.8"/>
+                <path d="M8 2V1M8 15V14M2 8H1M15 8H14M3.93 3.93L3.22 3.22M12.78 12.78L12.07 12.07M12.07 3.93L12.78 3.22M3.22 12.78L3.93 12.07" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              </svg>
+              데모 실행
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <path d="M2 6h8M6.5 2.5L10 6l-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <div class="cta-hint">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                <circle cx="5" cy="5" r="4" stroke="#5a6474" stroke-width="1"/>
+                <path d="M5 3v2.5L6.5 7" stroke="#5a6474" stroke-width="1" stroke-linecap="round"/>
+              </svg>
+              5분 가이드 · 계정 불필요
+            </div>
+          </div>
+
+          <!-- Secondary: Waitlist -->
+          <div class="cta-secondary fade-up">
+            <div class="cta-secondary__icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M15 3H3C2.45 3 2 3.45 2 4v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1zm-1 2l-5 3.5L4 5h10zm0 8H4V6.5l5 3.5 5-3.5V13z" fill="#9AA4B2"/>
+              </svg>
+            </div>
+            <h3 class="cta-card__title">얼리 액세스 신청</h3>
+            <p class="cta-card__desc">
+              인시던트 반복을 멈추는 첫 번째가 되세요. 웨이트리스트 참가 — 약속 없이.
+            </p>
+
+            <div id="waitlist-form-wrap">
+              <form class="waitlist-form" id="waitlist-form" aria-label="웨이트리스트 신청 폼" novalidate>
+                <label for="waitlist-email" class="sr-only">이메일 주소</label>
+                <input
+                  type="email"
+                  id="waitlist-email"
+                  name="email"
+                  class="input-field"
+                  placeholder="work@company.com"
+                  required
+                  autocomplete="email"
+                  aria-required="true"
+                  aria-describedby="waitlist-error"
+                />
+                <p class="waitlist-error" id="waitlist-error" role="alert" aria-live="polite"></p>
+                <button type="submit" class="waitlist-submit">웨이트리스트 참가</button>
+              </form>
+            </div>
+
+            <div class="waitlist-success" id="waitlist-success" role="status" aria-live="polite">
+              <div class="waitlist-success__icon" aria-hidden="true">✓</div>
+              <div class="waitlist-success__title">리스트에 등록되었습니다</div>
+              <div class="waitlist-success__sub">준비되면 연락드리겠습니다.</div>
+            </div>
+
+            <p class="cta-fine">스팸 없음. 언제든지 구독 취소 가능.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================
+       Footer
+       ============================================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner">
+      <div class="footer__logo">
+        <a href="#" aria-label="Sentinel 홈으로 이동">
+          <img
+            src="assets/images/sentinel_main_logo_v2.png"
+            alt="Sentinel"
+            width="140"
+            height="32"
+          />
+        </a>
+      </div>
+
+      <nav class="footer__links" aria-label="푸터 링크">
+        <a href="#">개인정보처리방침</a>
+        <a href="#">이용약관</a>
+        <a href="#cta">문의</a>
+      </nav>
+
+      <p class="footer__copy">
+        <small>© 2026 Sentinel. All rights reserved.</small>
+      </p>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       Modal — Early Access
+       ============================================================ -->
+  <div
+    class="modal-overlay"
+    id="modal-overlay"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-title"
+    aria-hidden="true"
+  >
+    <div class="modal" id="modal">
+      <button
+        class="modal__close"
+        id="modal-close"
+        aria-label="모달 닫기"
+      >
+        ✕
+      </button>
+
+      <div class="modal__icon" aria-hidden="true">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z" fill="#4DA3FF"/>
+        </svg>
+      </div>
+
+      <h2 class="modal__title" id="modal-title">얼리 액세스 신청</h2>
+      <p class="modal__subtitle">
+        같은 인시던트를 두 번 해결하는 팀 중 첫 번째가 되세요. 준비되면 연락드리겠습니다.
+      </p>
+
+      <div id="modal-form-wrap">
+        <form class="modal__form" id="modal-form" aria-label="모달 웨이트리스트 신청 폼" novalidate>
+          <label for="modal-email" class="sr-only">이메일 주소</label>
+          <input
+            type="email"
+            id="modal-email"
+            name="email"
+            class="input-field"
+            placeholder="work@company.com"
+            required
+            autocomplete="email"
+            aria-required="true"
+            aria-describedby="modal-error"
+          />
+          <p id="modal-error" role="alert" aria-live="polite" style="font-size:11px;color:var(--color-danger);display:none;"></p>
+          <button type="submit" class="modal__submit">
+            웨이트리스트 참가
+          </button>
+          <p class="modal__fine">스팸 없음. 언제든지 구독 취소 가능.</p>
+        </form>
+      </div>
+
+      <div class="modal__success" id="modal-success" role="status" aria-live="polite">
+        <div class="modal__success-icon" aria-hidden="true">🎉</div>
+        <div class="modal__success-title">리스트에 등록되었습니다!</div>
+        <p class="modal__success-sub">준비되면 이메일로 연락드리겠습니다.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Screen reader only helper -->
+  <style>
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

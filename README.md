@@ -5,6 +5,15 @@ Sentinel은 인시던트 대응을 구조화된 반복 가능한 워크플로우
 
 ---
 
+## 미션 정보
+
+```
+버셀 호스팅 랜딩 페이지 : https://sentinel-sprint-aaa5a9.vercel.app 
+깃허브 링크 : https://github.com/8848man/pure_js_landing.git
+```
+
+---
+
 ## 주요 기능
 
 | 기능 | 설명 |
